@@ -19,7 +19,9 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
-export default async function DashboardLayout({ children }: {children: ReactNode}) {
+export default async function DashboardLayout({
+    children,
+}: {children: ReactNode}) {
     const { getUser } = getKindeServerSession()
     const user = await getUser()
 
@@ -61,6 +63,7 @@ export default async function DashboardLayout({ children }: {children: ReactNode
                     </DropdownMenuContent>
                 </DropdownMenu>
             </header>
+            <main className="my-5">{children}</main>
         </div>
     )
 }
