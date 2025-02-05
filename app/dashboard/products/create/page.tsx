@@ -1,7 +1,10 @@
+import { UploadDropzone } from "@/app/lib/uploadthing";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -40,6 +43,30 @@ export default function ProductCreateRoute() {
                         <div className="flex flex-col gap-3">
                             <Label>Price</Label>
                             <Input type="number" placeholder="$55"/>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <Label>Featured Product</Label>
+                            <Switch />
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <Label>Status</Label>
+                            <Select>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select Status" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="draft">Draft</SelectItem>
+                                    <SelectItem value="published">Published</SelectItem>
+                                    <SelectItem value="archived">Archived</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <Label>Images</Label>
+                            <UploadDropzone endpoint="imageUploader" />
                         </div>
                     </div>
                 </CardContent>
